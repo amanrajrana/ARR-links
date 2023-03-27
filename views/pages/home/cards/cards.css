@@ -1,0 +1,112 @@
+/* animation */
+@keyframes scale {
+    form {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.015);
+    }
+}
+
+
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+
+.card {
+    border: 1px solid rgba(72, 72, 251, 0.19);
+    border-radius: 4px;
+    padding: 15px;
+    width: 30%;
+    margin: 15px;
+    min-width: 275px;
+
+}
+
+
+.card h4 {
+    color: var(--color-paragraph);
+    text-align: center;
+    margin: 10px auto;
+    font-size: 1.2rem;
+}
+
+.card .card-price-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.card p {
+    margin: 5px 0;
+}
+
+.card .original-price {
+    color: rgb(145, 145, 145);
+    text-decoration: line-through;
+}
+
+.card .offer {
+    display: inline-block;
+    padding: 5px 10px;
+    color: var(--color-primary);
+    background-color: rgba(72, 72, 251, 0.19);
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.card .selling-price {
+    font-size: 1.3rem;
+    color: var(--color-paragraph);
+}
+
+.card .selling-price span {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.card button {
+    background: var(--background-color);
+    border: none;
+    width: 70%;
+    margin: auto;
+    padding: 15px 15px;
+    border-radius: 6px;
+    color: var(--color-secondary);
+    font-weight: 600;
+    margin-top: 35px;
+    cursor: pointer;
+}
+
+.card .feature-container {
+    margin: 20px auto;
+    /* border: 2px solid red; */
+
+}
+
+.card h5 {
+    color: var(--color-paragraph);
+    font-size: 1rem;
+    margin: 15px 0;
+}
+
+.card li {
+    list-style: none;
+    margin: 7px 0;
+}
+
+.card:hover {
+    animation-name: scale;
+    animation-fill-mode: forwards;
+    animation-delay: 0.05s;
+    animation-duration: 0.5s;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.171);
+}
