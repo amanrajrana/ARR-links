@@ -1,10 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const urlRoute = require('./routes/url');
 const path = require('path');
+const bodyParser = require('body-parser');
+const URL = require('./models/url');
+const { handelGenerateNewShortUrl, handelGetAnalytics } = require('./controllers/url');
+const { handelRedirect } = require('./controllers/redirect')
 
 const app = express();
-
 const PORT = 3000;
 
 //EXPRESS SPECIFIC CONFIGURATION
@@ -20,7 +22,17 @@ mongoose.connect('mongodb://127.0.0.1:27017/link-shortener')
     .catch((err) => console.log("unable to connect mongodb", err));
 
 app.use(express.json());
-app.use('/url', urlRoute);
+// app.use('/', staticRouter)
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json());
+
+
+app.get('/s/:shortId', handelRedirect);
+
+
+app.post('/url', handelGenerateNewShortUrl)
+
+app.get("/analytics/:shortId", handelGetAnalytics)
 
 app.get("/", (req, res) => {
     res.render('pages/home/home.pug')
@@ -34,10 +46,15 @@ app.get("/sign-in", (req, res) => {
     res.render('pages/sign-in/sign-in.pug')
 });
 
+//this api display all the shorted url 
+app.get("/aman", async (req, res) => {
+    const allUrl = await URL.find({});
+    const domain = `http://localhost:3000/s/`;
+    // console.log(allUrl)
+    res.render('url.pug', { allUrl, domain })
+})
 
 
 
 
-
-
-app.listen(PORT, () => console.log(`App is running on port ${PORT}`));
+app.listen(PORT, () => console.log(`App is running on port http://127.0.01:${PORT}`));

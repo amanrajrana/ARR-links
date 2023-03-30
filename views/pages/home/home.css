@@ -27,6 +27,16 @@
 }
 
 
+@keyframes bg-color-animation {
+    0% {
+        background-image:   red;
+    }
+    100% {
+        background-color: green;
+    }
+}
+
+
 
 /* USER INPUT SECTION STYLING  */
 section {
@@ -205,3 +215,4 @@ article p:last-child {
         margin-top: 89px;
     }
 }
+
