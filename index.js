@@ -4,7 +4,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const URL = require('./models/url');
 const { handelGenerateNewShortUrl, handelGetAnalytics } = require('./controllers/url');
-const { handelRedirect } = require('./controllers/redirect')
+const { handelRedirect } = require('./controllers/redirect');
+const router = require('./routes/staticRouter');
 
 const app = express();
 const PORT = 3000;
@@ -26,17 +27,20 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
+// app.use("/short-url/", routerShortUrl)
+
 
 app.get('/s/:shortId', handelRedirect);
 
-
-app.post('/url', handelGenerateNewShortUrl)
 
 app.get("/analytics/:shortId", handelGetAnalytics)
 
 app.get("/", (req, res) => {
     res.render('pages/home/home.pug')
 });
+
+
+app.post('/api/short-url', handelGenerateNewShortUrl)
 
 app.get("/url-analytics", (req, res) => {
     res.render('pages/url-analytics/url-analytics.pug')

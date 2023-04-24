@@ -1,4 +1,8 @@
-
+/* utility classes */
+.hidden {
+    display: none !important; 
+    visibility: hidden;
+}
 
 /* custom shape divider styling */
 .custom-shape-divider-bottom-1679747064 {
@@ -29,8 +33,9 @@
 
 @keyframes bg-color-animation {
     0% {
-        background-image:   red;
+        background-image: red;
     }
+
     100% {
         background-color: green;
     }
@@ -89,7 +94,7 @@ section input {
     margin-right: 8px;
 }
 
-section button {
+section input[type="button"] {
     background: var(--background-color);
     color: var(--color-secondary);
     padding: 6px 12px;
@@ -105,7 +110,6 @@ section button {
 /* class="short-url-container" */
 .short-url-container {
     flex-direction: column;
-    display: none;
 }
 
 .short-url-container div {
@@ -121,7 +125,7 @@ section button {
 }
 
 .short-url-container span:first-child {
-    padding: 10px;
+    padding: 18px;
 }
 
 .short-url-container i {
@@ -132,6 +136,18 @@ section button {
 
 .short-url-container i:hover {
     color: var(--color-primary);
+}
+
+/* Error message  */
+#error-box {
+    /* margin: 20px auto; */
+    color: #f83b3b;
+    background: #ffb9b9;
+    padding: 10px 20px;
+    border-left: 10px solid red;
+    padding-left: 10px;
+    font-size: 0.8rem;
+    font-weight: 400;
 }
 
 /* add some space due to lining in shape divider  */
@@ -210,9 +226,8 @@ article p:last-child {
 }
 
 
-@media (max-width: 650px){
+@media (max-width: 650px) {
     .space {
         margin-top: 89px;
     }
 }
-
