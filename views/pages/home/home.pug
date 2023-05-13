@@ -1,8 +1,9 @@
 extends ../../base.pug
 
 block include-file 
-    style
-        include home.css
+    link(rel="stylesheet", href="/public/styles/home.css")
+    link(rel="stylesheet", href="/public/styles/cards.css")
+
 
 
 block content 
@@ -12,6 +13,10 @@ block content
             path.shape-fill(d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z')
     
     section
+        if isLogin 
+            img(scr="" onload="getGreeting()")
+            p.user #[span#greeting ] #{user.firstName}
+
         h2 ARR link Shortener
         form
             i.fa-solid.fa-link
@@ -23,15 +28,15 @@ block content
         .short-url-container
             .hidden#hidden
                 div
-                    span.short-urls https://short-url/sdfsdfds
+                    span.short-urls
                     span
                         i.fa-regular.fa-copy(title='copy')
-                        i.fa-solid.fa-qrcode(title='generate QR code')
+                        i.fa-solid.fa-qrcode(title='generate QR code' onclick="generateQR(0)")
                 div
-                    span.short-urls https://short-url/sdfsdfds
+                    span.short-urls 
                     span
                         i.fa-regular.fa-copy(title='copy')
-                        i.fa-solid.fa-qrcode(title='generate QR code')
+                        i.fa-solid.fa-qrcode(title='generate QR code', onclick="generateQR(1)")
             
             //- display when error
             div#error-box.hidden 
@@ -39,7 +44,15 @@ block content
 
     .space
         //- add some space due to lining in shape divider
+
     article
+        //- Display QR code if user requested
+        .qr-code-container.hidden
+            //- inject code with help of JavaScript
+            //- img(src="static/generated-qr-images/1682342439344.png", alt="QR code", width="200")
+            //- a(href="static/generated-qr-images/1682342439344.png" download) download 
+
+
         .heading
             h2 One short link, infinite possibilities
             p
@@ -50,14 +63,14 @@ block content
         //-  include card        
         #card-container.card-container
             h3 Go with link Shortener pro
-            include cards/cards.pug
+            include cards.pug
 
         //- create account button
         .create-account
-            a(href='') create account
+            a(href='/sign-up') create account
         p
             | Already have an account? 
-            a(href='') Log In
+            a(href='/sign-in') Log In
 
 block script
-    script(src="/static/script/home.js") 
+    script(src="/public/script/home.js") 

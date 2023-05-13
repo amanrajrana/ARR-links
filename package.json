@@ -10,9 +10,14 @@
   "author": "Aman Raj Rana",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.0",
     "pug": "^3.0.2",
-    "shortid": "^2.2.16"
+    "qrcode": "^1.5.3",
+    "shortid": "^2.2.16",
+    "uuid": "^9.0.0"
   }
 }

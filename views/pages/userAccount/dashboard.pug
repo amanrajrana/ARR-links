@@ -1,0 +1,125 @@
+extends template.pug
+
+block include-file 
+    link(rel="stylesheet" href="/public/styles/userAccount/dashboard.css")
+
+block content
+    .top
+        h1 Dashboard 
+        .user 
+            a(href="user/profile")  hi #{user.firstName}
+            img.user-pic(src=`/public/images/userpic/${user.profilePic}` alt="profile")
+
+    section.clicks-container 
+        .click-container-box
+            h5 Last 48 Hours
+            .total-clicks
+                span Total clicks 
+                p 1245
+            .progress 
+                //- temp variable only for testing
+                -let last48 = 12
+                if last48<0
+                    span.red
+                        <i class="fa-solid fa-arrow-trend-down fa-xl"></i>
+                        |#[= last48] %
+                else
+                    span.green 
+                        <i class="fa-solid fa-arrow-trend-up fa-xl"></i>
+                        |#[= last48] % 
+                p since last 48 hours
+
+
+        .click-container-box
+            h5 Last 7 days
+            .total-clicks
+                span Total clicks 
+
+                p 1245
+            .progress 
+                //- temp variable only for testing
+                -let last7 = -3
+                if last7<0
+                    span.red
+                        <i class="fa-solid fa-arrow-trend-down fa-xl"></i>
+                        |#[= last7] %
+                else
+                    span.green 
+                        <i class="fa-solid fa-arrow-trend-up fa-xl"></i>
+                        |#[= last7] %
+                p since last 7 days
+
+        .click-container-box
+            h5 Last 28 days
+            .total-clicks
+                span Total clicks  
+                p 1245
+            .progress 
+                //- temp variable only for testing
+                -let last28 = -3
+                if last28<0
+                    span.red
+                        <i class="fa-solid fa-arrow-trend-down fa-xl"></i>
+                        |#[= last28] %
+                else
+                    span.green 
+                        <i class="fa-solid fa-arrow-trend-up fa-xl"></i>
+                        |#[= last28] %
+                p since last 28 days
+
+    //- Top click urls
+    section.top-urls
+        .top-urls-header
+            .top-urls-header-left
+                p URLs 
+                span urls click analytics
+            .top-urls-header-right 
+                select#time  
+                    option(value="48") Last 48 hours
+                    option(value="7") Last 7 days
+                    option(value="28") Last 28 days
+                    option(value="all") Lifetime 
+
+        table 
+            thead 
+                tr
+                    th url 
+                    th destination 
+                    th clicks 
+                    th status
+
+            tbody 
+                tr 
+                    td bit.ly/dslfs3d
+                    td 
+                        | google.com 
+                        span https://www.google.com/s=dsdfkjla sdjlfa dsfjlas
+
+                    td 23
+                    td #[span active]
+                tr 
+                    td bit.ly/dslfs3d
+                    td 
+                        | google.com 
+                        span https://www.google.com/s=dsdfkjla sdjlfa dsfjlas 
+                    td 23
+                    td #[span inactive]
+                tr 
+                    td bit.ly/dslfs3d
+                    td 
+                        | google.com 
+                        span https://www.google.com/s=dsdfkjla sdjlfa dsfjlas
+                    td 23
+                    td #[span active]
+                tr 
+                    td bit.ly/dslfs3d
+                    td 
+                        | google.com 
+                        span https://www.google.com/s=dsdfkjla sdjlfa dsfjlas
+                    td 23
+                    td #[span active]
+
+
+
+block script
+    //- script(src="/public/script/signUp.js") 

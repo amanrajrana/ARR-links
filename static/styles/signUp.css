@@ -1,0 +1,201 @@
+.main {
+    background: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    height: 600px;
+    padding: 10px;
+}
+
+
+/**************** Sign Up Container **************************/
+.main .sign-up-container {
+    background-color: var(--color-secondary);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+}
+
+.sign-up-heading {
+    padding: 10px 30px;
+    border-bottom: 1px solid grey;
+}
+
+.sign-up-heading h3 {
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+
+.sign-up-heading p {
+    color: rgb(124, 124, 124);
+    font-size: 0.9rem;
+}
+
+/* form styling  */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 30px;
+    max-width: 450px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 8px auto;
+}
+
+.form-field input{
+    width: 100%;
+    padding: 8px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    outline: none;
+    background-color: rgb(232, 232, 232);
+}
+
+.form-field:first-child {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.form-field:first-child input{
+    width: 48%;
+}
+
+.form-field p {
+    color: red;
+    margin: 5px 10px;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.form-container #check-box {
+    color: rgb(124, 124, 124);
+    font-size: 0.95rem;
+    display: flex;
+}
+
+.form-container #check-box input {
+    width: 1.2rem;
+    margin: 5px;
+}
+
+.main button {
+    width: 100%;
+    max-width: 130px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 3px;
+    background: var(--background-color);
+    padding: 10px 15px;
+    font-weight: 600;
+    color: var(--color-secondary);
+    cursor: pointer;
+}
+
+.sign-in-link {
+    color: var(--color-secondary);
+}
+
+.sign-in-link a {
+    color: var(--color-secondary);
+    text-decoration: underline;
+}
+
+.message-box {
+    width: 100%;
+    max-width: 400px;
+    color: red;
+    text-align: center;
+    margin-top: -15px;
+    margin-bottom: 15px;
+    padding: 15px;
+    display: none;
+}
+
+
+
+/************************ OPT container *****************************************/
+.otp-container {
+    background-color: var(--color-secondary);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 425px;
+    max-width: 95%;
+}
+
+.otp-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.otp-input input {
+    text-align: center;
+    outline: none;
+    padding: 3px;
+    border: none;
+    border-bottom: 1px solid var(--color-paragraph);
+    letter-spacing: 3px;
+    font-size: 2rem;
+    max-width: 150px;
+}
+.otp-input p {
+    color: grey;
+    font-size: 0.8rem;
+    margin: 10px 0 20px;    
+}
+
+
+.otp-container .display-otp-message {
+    color: red;
+    font-size: 0.8rem;
+    text-align: center;
+    max-width: 350px;
+    display: none;
+}
+
+.display-otp-message {
+    display: none;
+}
+
+
+.otp-container {
+    display: none;
+}
+
+
+/********* Display  ****************/
+.sign-up-done {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.sign-up-done h3 {
+    color: rgb(0, 202, 0);
+    text-align: center;
+}
+
+.sign-up-done p {
+    text-align: center;
+    color: gray;
+}

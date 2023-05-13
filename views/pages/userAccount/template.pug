@@ -1,0 +1,72 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset='UTF-8')
+        meta(http-equiv='X-UA-Compatible' content='IE=edge')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='shortcut icon' href='/public/favicon.ico' type='image/x-icon')
+
+        link(rel="stylesheet" href="/public/styles/userAccount/template.css")
+
+        link(rel="stylesheet" href="/fontawesome/css/fontawesome.css")
+        link(rel="stylesheet" href="/fontawesome/css/brands.css")
+        link(rel="stylesheet" href="/fontawesome/css/solid.css")
+
+        title ARR link shortener
+        block include-file
+
+    body
+        nav 
+            h2 #[a(href="/") ARR link shortener ]
+
+            .nav-items 
+                ul 
+                    li 
+                        a(href="/") 
+                            <i class="fa-solid fa-house"></i>
+                            span#menu-item Home
+                    li 
+                        a(href="/user") 
+                            <i class="fa-solid fa-table-columns"></i> 
+                            span#menu-item Dashboard
+
+                    li 
+                        a(href="/user/urls") 
+                            i.fa-solid.fa-link 
+                            span#menu-item Your urls
+
+                    li 
+                        a(href="/user/create") 
+                            <i class="fa-regular fa-circle-plus"></i>
+                            span#menu-item Create New
+
+                    li 
+                        a(href="/user/order")
+                            <i class="fa-regular fa-bag-shopping"></i>
+                            span#menu-item Order service
+
+                    li 
+                        a(href="/user/notifications") 
+                            <i class="fa-regular fa-bell"></i>
+                            span#menu-item Notifications
+
+                    li 
+                        a(href="/user/profile") 
+                            //- Add logic to show user photo if there is not any profile photo then by default display user icon
+                            <i class="fa-solid fa-user"></i>
+                            span#menu-item Profile
+
+                ul 
+                    li 
+                        a(href="/user/log-out")
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            span#menu-item Log out
+
+        //- body content 
+        main
+            block content
+
+        //- footer content
+        //- include ./components/footer.pug
+
+        block script

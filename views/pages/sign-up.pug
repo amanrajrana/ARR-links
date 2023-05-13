@@ -1,0 +1,62 @@
+extends ../base.pug
+
+block include-file 
+    link(rel="stylesheet", href="/public/styles/signUp.css")
+    
+block content 
+    .main 
+        .sign-up-container 
+            .sign-up-heading 
+                h3 Sign Up 
+                p Please fill in this form to create an account! 
+            
+            form.form-container#sign-up-form(action="", method="post") 
+
+                //- Last Name and first Name
+                .form-field
+                    input#first-name(type="text", name="firstName", placeholder="First Name", required="true")
+                    input#last-name(type="text", name="lastName", placeholder="last Name", required="true")
+
+                //- Email address 
+                .form-field 
+                    input#email(type="email", name="email", placeholder="Email", required="true")
+
+                //- Password
+                .form-field#password 
+                    input#password-input-box(type="password", name="password", placeholder="Password", required="true", onclick="hideErrorMessage()")
+                    p#weekPasswordError week password
+
+                //- confirm Password 
+                .form-field 
+                    input#conf-password(type="password", name="confPassword", placeholder="Confirm Password", required="true", onclick="hideErrorMessage()")
+                    p#passwordNotMatch Password Not Match
+
+
+                //- accept the Terms of use & Privacy Policy
+                #check-box 
+                    input#policy(type="checkbox", name="policyCheckbox", required="true")
+                    span I accept the #[a(href="#") Terms of Use] & #[a(href="#") Privacy Policy]
+
+                button(type="submit") Sign Up
+
+            .message-box 
+            
+
+        .otp-container
+            h3 Enter OTP 
+            p Check your email for OTP 
+            form.otp-input(action="", method="post")
+                input(type="text", name="otp", required="true", maxlength="6", placeholder="000000")
+                p otp is valid for only 10 min
+                button(type="submit") Submit
+
+            
+
+            //- This section display otp if app is testing in local machine or developer mode
+            .display-otp-message 
+
+        .sign-in-link 
+            p Already have an account? #[a(href="/sign-in") Login here.]
+
+block script
+    script(src="/public/script/signUp.js") 

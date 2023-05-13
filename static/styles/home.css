@@ -1,6 +1,6 @@
 /* utility classes */
 .hidden {
-    display: none !important; 
+    display: none !important;
     visibility: hidden;
 }
 
@@ -52,6 +52,13 @@ section {
     align-items: center;
     height: 500px;
     flex-direction: column;
+}
+
+.user {
+    color: var(--color-secondary);
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-top: -30px;
 }
 
 section h2 {
@@ -107,7 +114,9 @@ section input[type="button"] {
     margin-right: 5px;
 }
 
-/* class="short-url-container" */
+
+
+
 .short-url-container {
     flex-direction: column;
 }
@@ -138,6 +147,11 @@ section input[type="button"] {
     color: var(--color-primary);
 }
 
+#hidden {
+    display: flex;
+    flex-direction: column;
+}
+
 /* Error message  */
 #error-box {
     /* margin: 20px auto; */
@@ -160,18 +174,43 @@ section input[type="button"] {
 }
 
 /* ARTICLE STYLING AREA  */
+
 article {
     color: var(--color-paragraph);
     background-color: #fff;
     max-width: var(--width-max-body);
     margin: auto;
     /* border: 2px solid red; */
-    padding: 125px 10px;
+    padding: 100px 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+/* QR code container  */
+.qr-code-container {
+    background-color: #fff;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.qr-code-container a {
+    background: var(--background-color);
+    color: var(--color-secondary);
+    padding: 5px 10px;
+    width: 80%;
+    border-radius: 3px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
 
 article .heading {
     display: flex;
@@ -180,6 +219,7 @@ article .heading {
     text-align: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 50px;
     /* border: 2px solid rgb(3, 255, 45); */
 }
 

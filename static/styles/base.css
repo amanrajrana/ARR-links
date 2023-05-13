@@ -35,6 +35,9 @@ a {
     color: rgb(255, 0, 0);
 }
 
+html {
+    scroll-behavior: smooth;
+}
 
 /* nav bar styling  */
 
@@ -61,6 +64,10 @@ nav .max-area{
     margin: auto;
 }
 
+nav h2 a {
+    color: var(--color-secondary);
+}
+
 .main-menu {
     display: flex;
     justify-content: center;
@@ -84,6 +91,8 @@ nav .max-area{
     border: none;
     color: var(--color-primary);
 }
+
+
 
 
 /* FOOTER STYLING */
@@ -170,6 +179,7 @@ footer .credit {
 
     nav {
         padding: 0;
+        background: var(--background-color);
     }
 
     nav .container {
@@ -191,11 +201,13 @@ footer .credit {
         /* height: 62px; */
     }
 
-    nav h1 {
+    nav h2 {
         font-size: 1rem;
         margin-top: 10px;
         color: var(--color-secondary);
     }
+
+
 
     .navbar .menu-items {
         display: flex;
@@ -216,6 +228,10 @@ footer .credit {
 
     .navbar .nav-container a:hover {
         font-weight: bolder;
+    }
+
+    nav h2 a {
+        color: var(--color-secondary) !important
     }
 
     .nav-container {

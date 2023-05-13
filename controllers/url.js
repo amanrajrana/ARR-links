@@ -3,12 +3,11 @@ const shortID = require('shortid');
 const URL = require("../models/url");
 
 const handelGenerateNewShortUrl = async (req, res) => {
-    console.log(req.body)
     const body = req.body;
     if (!body.url) {
-        return res.render('pages/home/home.pug',{ 
-            isShortIdGenerate: false,
-            errorMsg: 'Please enter url' 
+        res.status(401).send({ 
+            success: false, 
+            message: 'body can not be empty',
         })
     }
 
@@ -38,6 +37,7 @@ const handelGenerateNewShortUrl = async (req, res) => {
             success: false, 
             message: 'Something went wrong',
         });
+        return;
     }
    
     // 201 -> created

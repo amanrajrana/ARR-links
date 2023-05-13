@@ -1,0 +1,148 @@
+.top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+
+.user-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.clicks-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    color: var(--color-paragraph);
+    margin: 25px 0;
+}
+
+
+.clicks-container .click-container-box, .top-urls {
+    border-radius: 8px;
+    background-color: var(--color-secondary);
+    box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+
+}
+.clicks-container .click-container-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.click-container-box h5 {
+    font-weight: 600;
+    /* border: 1px solid red; */
+}
+
+.total-clicks {
+    /* border: 1px solid green; */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 0.8rem;
+}
+
+.total-clicks span {
+    color: gray;
+}
+
+.total-clicks p {
+    margin-top: -5px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.progress {
+    border: none;
+}
+
+.progress span {
+    letter-spacing: 3px;
+    display: inline;
+    font-weight: 600;
+    margin-right: 5px;
+}
+.progress i {
+    margin-right: 10px;
+}
+
+.progress p {
+    display: inline;
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.top-urls {
+    color: var(--color-paragraph);
+    overflow-x: auto;
+}
+
+.top-urls .top-urls-header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.top-urls-header-left p {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.top-urls-header-left span {
+    color: gray;
+    display: block;
+    font-size: 0.9rem;
+    margin-top: -5px;
+} 
+
+.top-urls-header-right select {
+    background-color: var(--background-color-lite);
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--color-paragraph)
+}
+
+.top-urls table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.top-urls td, .top-urls th {
+    text-align: left;
+    padding: 5px;
+}
+
+.top-urls th {
+    padding-bottom: 25px;
+}
+
+.top-urls tbody tr:nth-child(odd) {
+    background-color: var(--background-color-lite);
+}
+
+
+.top-urls td:nth-child(2) span{
+    display: block;
+    color: gray;
+    font-size: 0.8rem;
+}
+
+.top-urls td:last-child span{
+    background-color: rgba(255, 0, 0, 0.156);
+    color: red;
+    padding: 1px 10px;
+    border-radius: 8px;
+}
