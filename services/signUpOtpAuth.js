@@ -1,19 +1,19 @@
-const signUpOtpMap = new Map();
+const mapData = new Map();
 
-function setSignUpOtp (id, data) {
-    signUpOtpMap.set(id, data);
+function setMapData (id, data) {
+    mapData.set(id, data);
 }
 
-function getSignUpOtp (id) {
-    return signUpOtpMap.get(id);
+function getMapData (id) {
+    return mapData.get(id);
 }
 
-function deleteSignUpOtp (id) {
-    signUpOtpMap.delete(id);
+function deleteMapData (id) {
+    mapData.delete(id);
 }
 
 module.exports = {
-    setSignUpOtp,
-    getSignUpOtp,
-    deleteSignUpOtp
+    setMapData,
+    getMapData,
+    deleteMapData,
 }

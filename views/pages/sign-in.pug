@@ -1,30 +1,34 @@
 extends ../base.pug
 
 block include-file 
-    link(rel="stylesheet", href="/public/styles/signIn.css")
-    
+    link(rel="stylesheet" href="/public/styles/signIn.css")
+
 block content 
     .main 
-        .sign-in-container 
-            .sign-in-heading 
+        .container#container 
+            .heading 
                 i.fa-solid.fa-user.fa-2xl
                 h3 User Login
-            
-            form.form-container#sign-up-form(action="", method="post") 
+
+            form.form-container#sign-up-form(action="" method="post") 
 
                 //- Email address 
                 .form-field 
-                    input#email(type="email", name="email", placeholder="Email", required="true")
+                    input#email(type="email" name="email" placeholder="Email" required="true")
 
                 //- Password
                 .form-field 
-                    input#password(type="password", name="password", placeholder="Password", required="true")
+                    input#password(type="password" name="password" placeholder="Password" required="true")
+
+                .message-container.red 
 
                 button(type="submit") Sign in
 
-        .sign-in-link 
-            p Don't have an account? #[a(href="/sign-up") Create here.]
+                #forgot-password-link forgot password?
+            
+                
 
 
 block script
     script(src="/public/script/signIn.js")
+    script(src="/public/script/forgotPass.js")

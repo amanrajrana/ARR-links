@@ -4,7 +4,8 @@ const restrictAccessUser = (req, res, next) => {
     }
 
     else {
-        res.render('pages/sign-in.pug');
+        // res.render('pages/sign-in.pug');
+        res.redirect('/sign-in');
         return;
     }
 }

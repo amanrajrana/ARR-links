@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const { handelSignUp, handelLogIn, handelUserSignUpOtpVerify, handelLogOut } = require('../controllers/user');
+const { handelSignUp, handelLogIn, handelUserSignUpOtpVerify, handelLogOut, handleForgotPassword, handelUpdatePassword } = require('../controllers/user');
 const { restrictAccessUser } = require('../middlewares/restrictAccess')
 
 router.post("/sign-up", handelSignUp);
 router.post("/sign-in", handelLogIn);
 router.get('/log-out', handelLogOut);
 router.post("/verify-otp", handelUserSignUpOtpVerify);
+router.post("/forgot-password", handleForgotPassword);
+router.post("/update-password", handelUpdatePassword);
 
 
 // Following router only can access if user is login
