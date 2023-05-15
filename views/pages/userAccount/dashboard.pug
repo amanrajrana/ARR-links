@@ -11,7 +11,7 @@ block content
             img.user-pic(src=`/public/images/userpic/${user.profilePic}` alt="profile")
 
     section.clicks-container 
-        .click-container-box
+        .click-container-box.click-container-1
             h5 Last 48 Hours
             .total-clicks
                 span Total clicks 
@@ -30,7 +30,7 @@ block content
                 p since last 48 hours
 
 
-        .click-container-box
+        .click-container-box.click-container-2
             h5 Last 7 days
             .total-clicks
                 span Total clicks 
@@ -49,7 +49,7 @@ block content
                         |#[= last7] %
                 p since last 7 days
 
-        .click-container-box
+        .click-container-box.click-container-3
             h5 Last 28 days
             .total-clicks
                 span Total clicks  

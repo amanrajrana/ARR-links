@@ -17,50 +17,46 @@ html(lang="en")
 
     body
         nav 
-            h2 #[a(href="/") ARR link shortener ]
+            h2 #[a#logo(href="/") ]
 
             .nav-items 
                 ul 
                     li 
-                        a(href="/") 
-                            <i class="fa-solid fa-house"></i>
-                            span#menu-item Home
-                    li 
                         a(href="/user") 
-                            <i class="fa-solid fa-table-columns"></i> 
-                            span#menu-item Dashboard
+                            <i class="fa-solid fa-house"></i>
+                            span.menu-item 
 
                     li 
                         a(href="/user/urls") 
                             i.fa-solid.fa-link 
-                            span#menu-item Your urls
+                            span.menu-item 
 
                     li 
                         a(href="/user/create") 
                             <i class="fa-regular fa-circle-plus"></i>
-                            span#menu-item Create New
+                            span.menu-item 
 
                     li 
                         a(href="/user/order")
                             <i class="fa-regular fa-bag-shopping"></i>
-                            span#menu-item Order service
+                            span.menu-item 
 
-                    li 
+                    li
                         a(href="/user/notifications") 
                             <i class="fa-regular fa-bell"></i>
-                            span#menu-item Notifications
+                            span.menu-item 
 
-                    li 
+                    li#profile-menu-icon 
                         a(href="/user/profile") 
                             //- Add logic to show user photo if there is not any profile photo then by default display user icon
                             <i class="fa-solid fa-user"></i>
-                            span#menu-item Profile
+                            span.menu-item 
 
-                ul 
+                ul#log-out 
                     li 
                         a(href="/user/log-out")
                             <i class="fa-solid fa-right-from-bracket"></i>
-                            span#menu-item Log out
+                            span.menu-item 
 
         //- body content 
         main
@@ -70,3 +66,5 @@ html(lang="en")
         //- include ./components/footer.pug
 
         block script
+        
+        script(src="http://localhost:3000/public/script/userAccount/template.js") 
