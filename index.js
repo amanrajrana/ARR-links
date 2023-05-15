@@ -56,5 +56,8 @@ app.get("/aman", async (req, res) => {
     res.render('url.pug', { allUrl, domain })
 })
 
+app.get('*', (req, res) => {
+    res.status(404).render('404.pug');
+})
 
 app.listen(PORT, () => console.log(`App is running on port http://127.0.01:${PORT}`));

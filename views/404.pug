@@ -1,0 +1,17 @@
+doctype html
+html(lang="en")
+    head
+        include headData.pug
+
+        link(rel="stylesheet", href="/public/styles/404.css")
+        title Page doesn't exit
+    body 
+        .container 
+            .heading 404
+                span Opps! page not found 
+
+            .text Sorry. the page you're looking for doesn't exit. If you think something is broken, report a problem 
+
+            .links 
+                a(href="/")  Return home 
+                a(href="#")  Report Problem
