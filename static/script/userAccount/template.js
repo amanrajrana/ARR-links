@@ -2,7 +2,7 @@
 
 function wideScreenSize() {
     const menuItem = ['Home', 'Your urls', 'Create New', 'Order service', 'Notifications', 'Profile', 'Log out'];
-    const websiteName = "ARR link shortener";
+    const websiteName = "ARR links";
 
     const logo = document.getElementById('logo');
     const menu = document.getElementsByClassName('menu-item');
