@@ -37,7 +37,10 @@ block content
                     input#policy(type="checkbox", name="policyCheckbox", required="true")
                     span I accept the #[a(href="#") Terms of Use] & #[a(href="#") Privacy Policy]
 
-                button(type="submit") Sign Up
+                button#button(type="submit") Submit
+
+                div.loader#loader
+                    img(src="/public/loading.svg", alt="loading")
 
             .message-box 
             

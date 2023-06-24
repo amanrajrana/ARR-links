@@ -73,9 +73,10 @@
 
 .form-container button, .btn {
     width: 100%;
-    max-width: 100px;
+    max-width: 150px;
     margin: 15px 0;
     border: none;
+    height: 50px;
     border-radius: 3px;
     background: var(--background-color);
     padding: 10px 15px;

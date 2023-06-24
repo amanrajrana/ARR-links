@@ -67,6 +67,12 @@ function forgotPassword() {
         })
     };
 
+    const loader = document.getElementById('loader');
+    const button = document.getElementById('button');
+
+    button.style.display='none'
+    loader.style.display='flex';
+
     const response = fetch('/user/forgot-password', options);
 
     response.then((res) => {
@@ -84,6 +90,10 @@ function forgotPassword() {
         })
         .catch((error) => {
             displayMessage(error);
+        })
+        .finally(() => {
+            button.style.display='inline-block'
+            loader.style.display='none';
         });
 }
 

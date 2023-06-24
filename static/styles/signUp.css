@@ -88,7 +88,7 @@
     margin: 5px;
 }
 
-.main button {
+.main button{
     width: 100%;
     max-width: 130px;
     margin: 15px 0;
@@ -99,6 +99,7 @@
     font-weight: 600;
     color: var(--color-secondary);
     cursor: pointer;
+    height: 50px;
 }
 
 .sign-in-link {

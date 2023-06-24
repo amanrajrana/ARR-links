@@ -14,6 +14,7 @@ const { checkLogin } = require('./middlewares/checkLogin');
 const apiRouter = require('./routes/apiRouter');
 const userRouter = require('./routes/user');
 const staticRouter = require('./routes/staticRouter');
+const { hello } = require('./services/sendMail');
 
 const PORT = 3000;
 

@@ -52,6 +52,26 @@ nav h2 a {
     color: var(--color-primary);
 }
 
+/* Loader svg */
+
+.loader {
+    height: 50px;
+    margin: 15px 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 130px;
+    border: none;
+    border-radius: 3px;
+    background: var(--background-color);
+    color: var(--color-secondary);
+    cursor: pointer;
+}
+
+.loader img {
+    height: 80px;
+}
 
 
 

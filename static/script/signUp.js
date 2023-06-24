@@ -38,7 +38,6 @@ function otpBox() {
 function signUpDone(data) {
     document.cookie = `token=${data.token}`;
 
-
     const container = document.getElementsByClassName('otp-container')[0];
     container.classList.add('sign-up-done');
     container.innerHTML = `
@@ -86,6 +85,12 @@ const createUser = (event) => {
         body: JSON.stringify(data)
     };
 
+    const loader = document.getElementById('loader');
+    const button = document.getElementById('button');
+
+    button.style.display='none'
+    loader.style.display='flex';
+
     const response = fetch('/user/sign-up', options);
     response.then((res) => {
         if (res.ok) {
@@ -102,6 +107,10 @@ const createUser = (event) => {
         })
         .catch((error) => {
             displaySignUpMessage(error);
+        })
+        .finally(() => {
+            button.style.display='inline-block'
+            loader.style.display='none';
         });
     return;
 }

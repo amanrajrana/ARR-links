@@ -2,6 +2,17 @@ const user = require("../models/user");
 const bcrypt = require("bcrypt");
 const { createToken } = require("../services/auth");
 const { setOtp, verifyOtp } = require("./otp");
+const { sendMail } = require("../services/sendMail");
+const {
+  signInEmailOtpVerificationTemplateHtml,
+  signInEmailOtpVerificationTemplateText,
+  passwordRecoveryTemplateText,
+  passwordRecoveryTemplateHtml,
+} = require("../services/template");
+
+const emailHider = (email) => {
+  return `${email.slice(0, 2)}***@***${email.slice(email.length - 3)}`;
+};
 
 // User Login Handle
 const handelLogIn = async (req, res) => {
@@ -53,49 +64,74 @@ const handelLogIn = async (req, res) => {
 // user sign up request handel
 const handelSignUp = async (req, res) => {
   const body = req.body;
+
+  // Check if request body exits
   if (!body) {
     return res.status(401).send({
       success: false,
       message: "body can not be empty",
     });
   }
+
   const { firstName, lastName, password, email, policyCheckbox } = body;
+
   try {
     const emailFind = await user.findOne({ email });
 
-    // If email find in database, return the 409
+    // If email exists in the database, return a 409 conflict status
     if (emailFind) {
       return res.status(409).send({
         success: false,
-        message: "Email address already exists, try to forgot password",
+        message: "Email address already exists. Try resetting your password.",
       });
     }
 
-    console.log(password);
     // Hash password
     const hashPassword = await bcrypt.hash(password, 10);
 
+    // Prepare user data for saving
     const userData = {
       firstName,
       lastName,
       email,
       password: hashPassword,
-      isPolicyAccept: policyCheckbox == "on" ? true : false,
+      isPolicyAccept: policyCheckbox === "on",
     };
 
-    // map sessionId with userData
+    // Set OTP and session ID
     const { sessionId, otp } = setOtp(userData);
 
+    // Prepare email payload
+    let mailPayload = {
+      sender: `ARR links`,
+      receiversEmail: email,
+      subject: `ARR Links - Email verification`,
+      messageText: signInEmailOtpVerificationTemplateText(otp),
+      messageHtml: signInEmailOtpVerificationTemplateHtml(otp),
+    };
+
+    // Send email
+    const send = await sendMail(mailPayload);
+
+    // Check if email sending was successful
+    if (!send.success) {
+      return res.status(500).send({
+        success: false,
+        message: "Unable to send opt",
+      });
+    }
+
+    // Return response with success status and cookie
     return res
       .status(201)
       .cookie("uid", sessionId)
       .send({
         success: true,
-        message: `since you are on local machine so OTP can't send your email. Please use this otp ${otp}`,
+        message: `OTP send on "${emailHider(email)}". Check spam folder`,
       });
   } catch (error) {
     return res.status(500).send({
-      error: "Internal server error!",
+      error: "Internal server error! 2",
     });
   }
 };
@@ -169,12 +205,32 @@ const handleForgotPassword = async (req, res) => {
 
   const { sessionId, otp } = setOtp(email);
 
+      // Prepare email payload
+      let mailPayload = {
+        sender: `ARR links`,
+        receiversEmail: email,
+        subject: `ARR Links - Password Recovery`,
+        messageText: passwordRecoveryTemplateText(otp),
+        messageHtml: passwordRecoveryTemplateHtml(otp),
+      };
+  
+      // Send email
+      const send = await sendMail(mailPayload);
+  
+      // Check if email sending was successful
+      if (!send.success) {
+        return res.status(500).send({
+          success: false,
+          message: "Unable to send opt",
+        });
+      }
+
   return res
     .status(201)
     .cookie("uid", sessionId)
     .send({
       success: true,
-      message: `since you are on local machine so OTP can't send your email. Please use this otp ${otp}`,
+      message: `OTP send on "${emailHider(email)}". Check spam folder`,
     });
 };
 

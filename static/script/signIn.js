@@ -56,7 +56,10 @@ async function displayForgotPasswordForm() {
         <div class="form-field"> 
             <input id="password-forgot-email" type="email" name="email" placeholder="Email" required="true"></div>
         <div class="message-container red" id="forgot-password-message"> </div>
-        <input class="btn" type="button" value="get otp" onclick="forgotPassword()">
+        <input class="btn" id="button" type="button" value="get otp" onclick="forgotPassword()">
+        <div class="loader" id="loader">
+          <img src="/public/loading.svg" alt="loading">
+        </div>
         <a href="/sign-in"> Sign In with password</a>
     </form>
     `;
