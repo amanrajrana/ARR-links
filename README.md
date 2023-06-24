@@ -103,22 +103,12 @@ Install dependencies
   npm install
 ```
 
-##### Make missing files or directory
-Due to security reasons there are some in of a directory name `private` is not push. To run follow following steps
+##### .env variable setup
 
-A. **JWT Signature**
-1. Make directory in root folder name `private`
-2. Create a JavaScript file with the name `secretKey.js` inside `private` directory
-3. Add following code in this
+Copy `.env.example` file make `.env` file and edit it as requirement
 
-```javaScript
-const jwtSecretKey = 'Your_Secret_key';
-module.exports = {
-    jwtSecretKey
-}
-```
 
-Start Server
+##### Start Server
 
 ```bash
   npm run start
