@@ -35,7 +35,7 @@ const verifyOtp = async (sessionId, userOtp) => {
     if (!savedData) {
         return {
             success: false,
-            'message': "Unable to verify, please go back and try and again"
+            message: "Unable to verify, please go back and try and again"
         };
     }
 
@@ -44,7 +44,7 @@ const verifyOtp = async (sessionId, userOtp) => {
         mapData.delete(sessionId);
         return {
             success: false,
-            'message': "otp is expired"
+            message: "otp is expired"
         }
     }
 
@@ -52,7 +52,7 @@ const verifyOtp = async (sessionId, userOtp) => {
         mapData.delete(sessionId);
         return {
             success: false,
-            'message': "maximum attempts are reached"
+            message: "maximum attempts are reached"
         };
     }
 

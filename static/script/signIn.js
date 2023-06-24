@@ -1,53 +1,53 @@
 function signInDone(data) {
-    document.cookie = `token=${data.token}`;
+  document.cookie = `token=${data.token}`;
 
-    document.location.href = '/user';
+  document.location.href = "/user";
 }
 
 function signInMessage(message) {
-    document.getElementById('message-container').innerHTML = message;
+  document.getElementById("message-container").innerHTML = message;
 }
 
 function displayMessage(message) {
-    document.getElementById('forgot-password-message').innerHTML = message;
+  document.getElementById("message-container").innerHTML = message;
 }
 
 const signIn = (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData.entries());
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const data = Object.fromEntries(formData.entries());
 
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    };
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  };
 
-    const response = fetch('/user/sign-in', options);
-    response.then((res) => {
-        if (res.ok) {
-            return res.json();
-        } else {
-            throw new Error("Invalid username or password");
-        }
-    })
-        .then((data) => {
-            signInDone(data);
-        })
-        .catch((error) => {
-            displayMessage(error);
+  const response = fetch("/user/sign-in", options);
+  response
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        return res.json().then((errorData) => {
+          throw new Error(errorData.message || "Invalid credential");
         });
-
-
-}
+      }
+    })
+    .then((data) => {
+      signInDone(data);
+    })
+    .catch((error) => {
+      displayMessage(error);
+    });
+};
 
 async function displayForgotPasswordForm() {
+  const container = document.getElementById("container");
 
-    const container = document.getElementById('container');
-
-    container.innerHTML = `
+  container.innerHTML = `
     <div class="heading"> 
         <i class="fa-solid fa-user fa-2xl"></i>
         <h3>Password Forgot</h3>
@@ -59,15 +59,13 @@ async function displayForgotPasswordForm() {
         <input class="btn" type="button" value="get otp" onclick="forgotPassword()">
         <a href="/sign-in"> Sign In with password</a>
     </form>
-    `
-    return;
-
+    `;
+  return;
 }
 
-
 const signUpForm = document.getElementById("sign-up-form");
-signUpForm.addEventListener('submit', signIn);
+signUpForm.addEventListener("submit", signIn);
 
-document.getElementById('forgot-password-link').addEventListener('click', displayForgotPasswordForm);
-
-
+document
+  .getElementById("forgot-password-link")
+  .addEventListener("click", displayForgotPasswordForm);

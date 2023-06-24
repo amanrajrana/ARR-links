@@ -44,7 +44,7 @@ function signUpDone(data) {
     container.innerHTML = `
     <i class="fa-solid fa-circle-check fa-2xl" style="color: #1fff0f;"></i>
     <h3> Welcome ${data.name} </h3>
-    <p> Your account have been created successfully. you will be automatic redirect in <span id="redirectTime"></span>t o dashboard <br> or <br> go back and login <a href="/sign-in">click here</p>
+    <p> Your account have been created successfully. you will be automatic redirect in <span id="redirectTime"></span> to dashboard <br> or <br> go back and login <a href="/sign-in">click here</p>
     `
 
     let redirectTime = 5;
