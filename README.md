@@ -111,6 +111,7 @@ Following variable is needed
 * `JWT_SECRET_KEY` secret key for Json web token signature
 * `SENDER_EMAIL_ID` Email Address which is use to send email
 * `EMAIL_PASSWORD` Password of email
+* `DB_URI` MongoDB uri
 
 
 ##### Start Server
