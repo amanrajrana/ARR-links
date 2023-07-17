@@ -34,8 +34,6 @@ const sendMail = async ({
       html: messageHtml, // html body
     });
 
-    console.log(`info`);
-    console.log(info);
     return {
       success: true,
       info,
