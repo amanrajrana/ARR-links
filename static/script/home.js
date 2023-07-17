@@ -52,7 +52,7 @@ function getShortUrl() {
     }
 
     // AJAX request
-    fetch('http://127.0.0.1:3000/api/short-url', urlOptions)
+    fetch('api/short-url', urlOptions)
         .then((response) => {
             if (response.ok) {
                 return response.json();
@@ -82,8 +82,8 @@ const displayShortUrl = (data) => {
     document.getElementById('hidden').classList.remove('hidden')
     let shortUrlSpan = document.getElementsByClassName('short-urls')
 
-    shortUrlSpan[0].innerHTML = `http://localhost/s/${data.shortId1}`;
-    shortUrlSpan[1].innerHTML = `http://localhost/s/${data.shortId2}`;
+    shortUrlSpan[0].innerHTML = `https://url.amanrajrna.engineer/${data.shortId1}`;
+    shortUrlSpan[1].innerHTML = `https://url.amanrajrna.engineer/${data.shortId2}`;
 
     // clean the long url input box 
     document.getElementById('long-url').value = "";
@@ -152,7 +152,7 @@ const generateQR = (index) => {
         }),
     }
 
-    fetch('http://127.0.0.1:3000/api/qr-code', urlOptions)
+    fetch('/api/qr-code', urlOptions)
         .then((response) => {
             if (response.ok) {
                 return response.json();
