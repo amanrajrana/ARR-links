@@ -51,8 +51,8 @@ function getShortUrl() {
         }),
     }
 
-    // AJAX request
-    fetch('api/short-url', urlOptions)
+    // Fetch request
+    fetch('/api/short-url', urlOptions)
         .then((response) => {
             if (response.ok) {
                 return response.json();
