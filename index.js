@@ -1,29 +1,34 @@
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
 const path = require("path");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const URL = require("./models/url");
 const { handelGetAnalytics } = require("./controllers/url");
-const { handelRedirect } = require("./controllers/redirect");
 const { checkLogin } = require("./middlewares/checkLogin");
+const { connectDB } = require("./dbConnect");
+const { checkEnv4Development, checkEnv4Production } = require("./checkEnvVar");
 require("dotenv").config({ path: ".env.local" });
 
-/** Import Routers */
-const apiRouter = require("./routes/apiRouter");
-const userRouter = require("./routes/user");
-const staticRouter = require("./routes/staticRouter");
+const MONGO_URI = process.env.MONGO_URI;
+const PORT = process.env.PORT;
+const NODE_ENV = process.env.NODE_ENV;
 
-const PORT = process.env.PORT || 3000; // Default to port 3000 if PORT is not defined in .env
+const checkRequiredEnv = () => {
+  if (!NODE_ENV) {
+    console.error("NODE_ENV not found");
+    process.exit(1);
+  }
 
-// connect mongoDB to localhost
-const uri = process.env.DB_URI || console.log(`mongodb uri not found`);
+  console.log(`App is running in ${NODE_ENV} mode`);
+  if (NODE_ENV === "production") {
+    checkEnv4Production(); // Check for required env variables for production
+  } else {
+    checkEnv4Development(); // Check for required env variables for development
+  }
+};
 
-mongoose
-  .connect(uri)
-  .then(() => console.log("mongodb connected"))
-  .catch((err) => console.log("unable to connect mongodb", err));
+checkRequiredEnv();
 
 //PUG SPECIFIC CONFIGURATION
 app.set("view-engine", "pug"); //set view engine as PUG
@@ -45,11 +50,10 @@ app.use(
 app.use(checkLogin);
 
 // ROUTERS
-app.use("/api", apiRouter);
-app.use("/user", userRouter);
-app.use("/", staticRouter);
+app.use("/api", require("./routes/apiRouter"));
+app.use("/user", require("./routes/user"));
+app.use("/", require("./routes/staticRouter"));
 
-app.get("/s/:shortId", handelRedirect);
 app.get("/analytics/:shortId", handelGetAnalytics);
 
 //this api display all the shorted url
@@ -63,6 +67,13 @@ app.get("*", (req, res) => {
   res.status(404).render("404.pug");
 });
 
-app.listen(PORT, () =>
-  console.log(`App is running on port ${PORT}`)
-);
+connectDB(MONGO_URI)
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log("app is started PORT@", PORT);
+    });
+  })
+  .catch((error) => {
+    console.log("Unable to start app index.js ", error);
+    process.exit(1);
+  });

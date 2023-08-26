@@ -1,67 +1,54 @@
-// const shortId = require('shortId');
-const shortID = require('shortid');
+const generateShortID = require("../utils/shortID");
 const URL = require("../models/url");
+require("dotenv").config({ path: ".env.local" });
+
+const redirectServerHost = process.env.REDIRECT_SERVER_HOST;
 
 const handelGenerateNewShortUrl = async (req, res) => {
-    const body = req.body;
-    if (!body.url) {
-        res.status(401).send({ 
-            success: false, 
-            message: 'body can not be empty',
-        })
-    }
-
-    // create 2 shortIDs for the long url 
-    const shortId1 = shortID();
-    const shortId2 = shortID();
-
-    try {
-         // enter first shortid
-        await URL.create({
-            shortId: shortId1,
-            redirectURL: body.url,
-            visitHistory: [],
-        }); 
-
-        // Insert second shortid 
-        await URL.create({
-            shortId: shortId2,
-            redirectURL: body.url,
-            visitHistory: [],
-        });
-
-    } catch (error) {
-
-        // 400 -> bad request
-        res.status(400).send({ 
-            success: false, 
-            message: 'Something went wrong',
-        });
-        return;
-    }
-   
-    // 201 -> created
-    res.status(201).send({ 
-        success: true, 
-        message: 'Data saved successfully',
-        shortId1, 
-        shortId2 
+  const body = req.body;
+  if (!body.url) {
+    res.status(401).send({
+      success: false,
+      message: "body can not be empty",
     });
-}
+  }
+
+  const shortId = generateShortID(6);
+
+  try {
+    // enter first shortid
+    await URL.create({
+      shortId: shortId,
+      redirectURL: body.url,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Internal server error",
+    });
+    return;
+  }
+
+  // 201 -> created
+  res.status(201).send({
+    success: true,
+    message: "Data saved successfully",
+    shortUrl: `${redirectServerHost}/${shortId}`,
+  });
+};
 
 const handelGetAnalytics = async (req, res) => {
-    const shortId = req.params.shortId;
-    const result = await URL.findOne({ shortId });
-    
+  const shortId = req.params.shortId;
+  const result = await URL.findOne({ shortId });
 
-    return res.render('pages/url-analytics/url-analytics.pug', {
-        totalClicks: result.visitHistory.length,
-        analytics: result.visitHistory
-    })
-}
+  return res.render("pages/url-analytics/url-analytics.pug", {
+    totalClicks: result.visitHistory.length,
+    analytics: result.visitHistory,
+  });
+};
 
 module.exports = {
-    handelGenerateNewShortUrl,
-    handelGetAnalytics
-}
-
+  handelGenerateNewShortUrl,
+  handelGetAnalytics,
+};

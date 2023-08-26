@@ -28,15 +28,10 @@ block content
         .short-url-container
             .hidden#hidden
                 div
-                    span.short-urls
+                    span#shortUrl
                     span
-                        i.fa-regular.fa-copy(title='copy')
+                        i.fa-regular.fa-copy(title='copy' onclick="copyToClipboard()")
                         i.fa-solid.fa-qrcode(title='generate QR code' onclick="generateQR(0)")
-                div
-                    span.short-urls 
-                    span
-                        i.fa-regular.fa-copy(title='copy')
-                        i.fa-solid.fa-qrcode(title='generate QR code', onclick="generateQR(1)")
             
             //- display when error
             div#error-box.hidden 
